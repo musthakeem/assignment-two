@@ -1,14 +1,14 @@
 import Footer from 'components/Footer';
-import Navigation from 'components/Navigation';
-import React, { Fragment } from 'react';
+import React from 'react';
 
 function Layout({children}) {
     return (
-        <Fragment>
-            <Navigation/>
-            {children}
+        <div className='flex flex-col h-screen justify-between'>
+            <main>
+                {children}
+            </main>
             <Footer/>
-        </Fragment>
+        </div>
     );
 }
 

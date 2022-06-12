@@ -1,5 +1,5 @@
 import { getProductDetails } from "services";
-import { Layout } from "components";
+import { Layout, Loader } from "components";
 import { useEffect, useState } from "react";
 import { MdStar } from "react-icons/md";
 import { connect } from "react-redux";
@@ -25,7 +25,7 @@ function Product({addToCart}) {
     return (
         <Layout>
             {
-data &&
+        data  ? 
         <div className='py-16 sm:py-18 sm:px-4 md:px-6 h-screen'>
             <div className="md:mt-24 ">
                 <div className="float-left w-full sm:w-1/2 p-4">
@@ -60,6 +60,8 @@ data &&
 
             </div>            
         </div>
+        :
+        <Loader/>
             }
     </Layout>
     );

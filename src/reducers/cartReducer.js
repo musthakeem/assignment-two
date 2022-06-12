@@ -44,13 +44,13 @@ const cartReducer = createReducer(initialState, {
     [addItemInit]: (cartState, action) =>{
         cartState.isLoading = true;
     },
-    [addItemFailed]: (cartState, action) =>{
-        cartState.isLoading = false;
-    },
     [addItemUpdated]: (cartState, action) =>{
         cartState.isLoading = false;
         cartState.cartItems = action.payload.updatedCart;
         cartState.totalPrice = action.payload.total;
+    },
+    [addItemFailed]: (cartState, action) =>{
+        cartState.isLoading = false;
     },
     [incrementItemInit]: (cartState, action) =>{
         cartState.isLoading = true;
@@ -120,7 +120,6 @@ export const addItem = (newItem)=>{
             })); // Product Added
             
         } catch (error) {
-            alert(error)
             dispatch(addItemFailed()); // Failed
         }        
     }
@@ -253,13 +252,12 @@ const addItemToCart = (cartItems, item) =>{
     
     const duplicate = cartItems.some(cartItem=> cartItem.id === item.id);
     var totalPrice = 0;
-
     // New Product
     if (!duplicate){
         const newitem = {...item, count:1}
         const newItems = [...cartItems , newitem]
         newItems.map(item=>{
-            return totalPrice += item.price ?? 0 * item.count
+            return totalPrice += (item.price ?? 0) * item.count
         })
         return { cartItems: newItems, totalPrice }
     }
@@ -296,7 +294,7 @@ const addItemToCart = (cartItems, item) =>{
         const newitem = {...addItem, count:1}
         const newItems = [...cartItems , newitem]
         newItems.map(item=>{
-            return totalPrice += item.price ?? 0 * item.count
+            return totalPrice += (item.price ?? 0) * item.count
         })
         return { cartItems: newItems, totalPrice }
     }
@@ -327,9 +325,8 @@ const addItemToCart = (cartItems, item) =>{
 
     const itemIndex = cartItems.findIndex(cartItem=> cartItem.id === reduceItem.id);
     if (itemIndex===-1){
-        alert(itemIndex)
         cartItems.map(item=>{
-            return totalPrice += item.price ?? 0 * item.count
+            return totalPrice += (item.price ?? 0) * item.count
         })
         return { cartItems, totalPrice }
     }

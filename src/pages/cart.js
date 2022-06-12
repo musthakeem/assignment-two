@@ -12,15 +12,11 @@ function cart({cartInfo}) {
                 <div className="float-left w-full lg:w-3/5 bg-slate-50">                                        
                     <div className=' px-3'>
                     <h2 className=' p-3'>Products</h2>
-
-                    {cartItems && cartItems.length>0 &&
-                    cartItems.map((item,index)=>(
-                        <Cart key={index} data={item}/>
-                    ))
-                    }
-                    {!cartItems && cartItems.length <= 0 &&
-                    <div className='w-full text-center items-center'>
-                        <span className='items-center text-2xl font-light'>
+                    { cartItems && cartItems.length > 0 ?
+                    <Cart/> 
+                    :
+                    <div data-testid='cart-empty-container' className='w-full text-center items-center p-5'>
+                        <span className='items-center text-xl font-semibold'>
                             Empty Cart
                         </span>
                     </div>

@@ -10,7 +10,8 @@ import Cart from 'pages/cart';
 function App() {
   
   return(
-    <main>
+    <>
+      <Navigation/>
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About/>} />
@@ -18,7 +19,7 @@ function App() {
         <Route path="/products/:id" element={<Product/>} />
         <Route path='/cart' element={<Cart/>}/>
       </Routes>
-    </main>
+    </>
   );
 }
 

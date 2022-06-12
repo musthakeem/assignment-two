@@ -5,6 +5,8 @@ import ProductCarousel from "./ProductCarousel";
 import Footer from "./Footer";
 import Cart from "./Cart";
 import CartSummary from "./CartSummary";
+import Loader from "./Loader";
+
 
 
 export{
@@ -14,5 +16,6 @@ export{
     ProductCarousel,
     Cart,
     CartSummary,
-    Footer
+    Footer,
+    Loader
 }

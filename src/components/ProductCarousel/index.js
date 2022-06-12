@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { addItem } from 'reducers';
 import { connect } from 'react-redux';
 import { getCategoryProducts } from 'services';
+import Loader from 'components/Loader';
 
 const responsive = {
     xl: {
@@ -49,7 +50,7 @@ function ProductCarousel({category="General", query='jewllery',addToCart}) {
     
   return (
         <>
-        { data && data.length>0 &&
+        { data && data.length>0 ?
             <div className="px-3 py-2 sm:py-4 sm:mx-4 lg:mx-6">
             <h3 className='py-2'>{category}</h3>
             <Carousel responsive={responsive}>
@@ -75,7 +76,10 @@ function ProductCarousel({category="General", query='jewllery',addToCart}) {
                }
                 
             </Carousel>
-        </div>}
+        </div>
+        :
+        <Loader/>
+        }
         </>
     );
 }
